@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\ProcurementProcess.Net6.props" />
+</Project>
