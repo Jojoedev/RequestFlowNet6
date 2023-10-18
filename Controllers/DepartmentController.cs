@@ -4,19 +4,20 @@ using ProcurementProcess.Net6.Models;
 
 namespace ProcurementProcess.Net6.Controllers
 {
-    public class VendorController : Controller
+    public class DepartmentController : Controller
     {
-        private readonly IGenericInterface<Vendor> _vendor;
-        public VendorController(IGenericInterface<Vendor> vendor)
+        private readonly IGenericInterface<Department> _department;
+
+        public DepartmentController(IGenericInterface<Department> deparment)
         {
-           _vendor = vendor;
+            _department = deparment;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var vendors = _vendor.GetList();
-            return View(vendors);
+            var deptList = _department.GetList();
+            return View(deptList);
         }
 
         [HttpGet]
@@ -26,12 +27,12 @@ namespace ProcurementProcess.Net6.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Vendor vendor)
+        public IActionResult Create(Department department)
         {
             if (ModelState.IsValid)
-            { 
-                _vendor.CreateAsync(vendor);
-                return RedirectToAction("Index");
+            {
+                _department.CreateAsync(department);
+                
             }
             return RedirectToAction("Index");
         }

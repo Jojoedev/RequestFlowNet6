@@ -12,7 +12,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddTransient<IGenericInterface<RequestStatus>, GenericService<RequestStatus>>();
 builder.Services.AddTransient<IGenericInterface<Vendor>, GenericService<Vendor>>();
+builder.Services.AddTransient<IGenericInterface<Department>, GenericService<Department>>();
+builder.Services.AddTransient<IGenericInterface<Request>, GenericService<Request>>();
+builder.Services.AddTransient<ISpecificInterface, SpecificService>();
 
 
 var app = builder.Build();

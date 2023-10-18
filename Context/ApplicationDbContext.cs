@@ -14,6 +14,7 @@ namespace ProcurementProcess.Net6.Context
         public DbSet<Request> Requests { get; set; }    
         public DbSet<Department> Departments { get; set; }    
         public DbSet<Vendor> Vendors { get; set; }    
+        public DbSet<RequestStatus> RequestStatuses { get; set; }    
 
 
     }

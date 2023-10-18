@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProcurementProcess.Net6.Context;
 
@@ -11,9 +12,10 @@ using ProcurementProcess.Net6.Context;
 namespace ProcurementProcess.Net6.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231016154600_UpdatedNewDB")]
+    partial class UpdatedNewDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,6 +33,7 @@ namespace ProcurementProcess.Net6.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -45,9 +48,6 @@ namespace ProcurementProcess.Net6.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
@@ -66,9 +66,6 @@ namespace ProcurementProcess.Net6.Migrations
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("RequestStatusId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
@@ -79,27 +76,9 @@ namespace ProcurementProcess.Net6.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.HasIndex("RequestStatusId");
-
                     b.HasIndex("VendorId");
 
                     b.ToTable("Requests");
-                });
-
-            modelBuilder.Entity("ProcurementProcess.Net6.Models.RequestStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RequestStatuses");
                 });
 
             modelBuilder.Entity("ProcurementProcess.Net6.Models.Vendor", b =>
@@ -119,6 +98,7 @@ namespace ProcurementProcess.Net6.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -137,17 +117,11 @@ namespace ProcurementProcess.Net6.Migrations
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("ProcurementProcess.Net6.Models.RequestStatus", "RequestStatus")
-                        .WithMany()
-                        .HasForeignKey("RequestStatusId");
-
                     b.HasOne("ProcurementProcess.Net6.Models.Vendor", "Vendor")
                         .WithMany()
                         .HasForeignKey("VendorId");
 
                     b.Navigation("Department");
-
-                    b.Navigation("RequestStatus");
 
                     b.Navigation("Vendor");
                 });
