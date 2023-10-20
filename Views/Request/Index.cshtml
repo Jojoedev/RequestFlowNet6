@@ -15,6 +15,12 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequesterName)
+            </th> 
+            <th>
                 @Html.DisplayNameFor(model => model.Department.Name)
             </th>
             <th>
@@ -42,6 +48,12 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequesterName)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Department.Name)
             </td>

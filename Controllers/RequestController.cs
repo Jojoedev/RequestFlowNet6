@@ -12,17 +12,22 @@ namespace ProcurementProcess.Net6.Controllers
         private readonly IGenericInterface<Vendor> _vendor;
         private readonly IGenericInterface<RequestStatus> _requestStatus;
         private readonly ISpecificInterface _specific;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public RequestController(IGenericInterface<Request> request, 
             IGenericInterface<Department> department, IGenericInterface<Vendor> vendor,
             IGenericInterface<RequestStatus> requestStatus,
-            ISpecificInterface specific)
+            ISpecificInterface specific,
+            IWebHostEnvironment webHostEnvironment
+            )
         {
             _request = request;
             _department = department;
             _vendor = vendor;
             _requestStatus = requestStatus;
             _specific = specific;
+            _webHostEnvironment = webHostEnvironment;
+          
         }
         
         public SelectList VendorList { get; set; }
@@ -45,25 +50,35 @@ namespace ProcurementProcess.Net6.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Request request)
+        public async Task<IActionResult> Create(Request request)
         {
+
+            request.CreatedDate = DateTime.Now;
             request.TotalAmount = request.Quantity * request.Price;
 
             if (ModelState.IsValid)
             {
+                if(request.Image != null)
+                {
+                    string folder = "SupportDoc/POrders";
+
+                    folder +=Guid.NewGuid().ToString() + "_" + request.Image.FileName;
+                    string savingFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+
+                   await request.Image.CopyToAsync(new FileStream(savingFolder, FileMode.Create));
+    
+                }
+
                 _request.CreateAsync(request);
-
-               return RedirectToAction("Index");
+               
             }
-            
-                
+            else
+            {
+                LoadData();
                 return View();
-            
-            //return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
-
-
-
 
         public void LoadData()
         {

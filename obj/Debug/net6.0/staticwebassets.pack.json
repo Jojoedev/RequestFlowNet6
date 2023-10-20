@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ProcurementProcess.Net6.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\HP\\Desktop\\CSharp projects\\ProcurementProcess.Net6\\wwwroot\\SupportDoc\\POrders42b7e552-93e0-442c-b4cd-58d86cb16664_20230731_103659.jpg",
+      "PackagePath": "staticwebassets\\SupportDoc\\POrders42b7e552-93e0-442c-b4cd-58d86cb16664_20230731_103659.jpg"
+    },
+    {
       "Id": "C:\\Users\\HP\\Desktop\\CSharp projects\\ProcurementProcess.Net6\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

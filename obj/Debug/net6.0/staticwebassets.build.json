@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "S3zymGgedRs3c41B87DHgtJ0DYAr17LoXIrNNM2guZs=",
+  "Hash": "FRYId+O0BLcgSX8QoD1E5ctmSY7bjNQyn7AHUB8PCxI=",
   "Source": "ProcurementProcess.Net6",
   "BasePath": "_content/ProcurementProcess.Net6",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\CSharp projects\\ProcurementProcess.Net6\\wwwroot\\SupportDoc\\POrders42b7e552-93e0-442c-b4cd-58d86cb16664_20230731_103659.jpg",
+      "SourceId": "ProcurementProcess.Net6",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\CSharp projects\\ProcurementProcess.Net6\\wwwroot\\",
+      "BasePath": "_content/ProcurementProcess.Net6",
+      "RelativePath": "SupportDoc/POrders42b7e552-93e0-442c-b4cd-58d86cb16664_20230731_103659.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\SupportDoc\\POrders42b7e552-93e0-442c-b4cd-58d86cb16664_20230731_103659.jpg"
     }
   ]
 }
