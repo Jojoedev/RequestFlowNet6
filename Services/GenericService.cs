@@ -12,8 +12,7 @@ namespace ProcurementProcess.Net6.Services
         private readonly DbSet<TEntity> _database;
 
         public GenericService(ApplicationDbContext context)
-        {
-         
+        {     
             _context = context;
             _database = _context.Set<TEntity>();
             
@@ -31,9 +30,15 @@ namespace ProcurementProcess.Net6.Services
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetEntityAsync(int id)
+        public TEntity GetEntity(int id)
         {
-            throw new NotImplementedException();
+            var item = _database.Find(id);
+
+            if(item == null)
+            {
+                return null;
+            }
+            return item;
         }
 
         public IEnumerable<TEntity> GetList()
@@ -42,9 +47,10 @@ namespace ProcurementProcess.Net6.Services
             
         }
 
-        public Task<TEntity> UpdateAsync(TEntity Tentity)
+        public void UpdateAsync(TEntity Tentity)
         {
-            throw new NotImplementedException();
+           _database.Update(Tentity);
+            _context.SaveChangesAsync();
         }
     }
 }

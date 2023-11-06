@@ -13,6 +13,7 @@ namespace ProcurementProcess.Net6.Models
         public decimal Quantity { get; set; }
         public decimal Price { get; set; }
 
+        [DisplayName("Amount")]
         public decimal TotalAmount { get; set; }
 
        

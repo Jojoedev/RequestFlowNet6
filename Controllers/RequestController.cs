@@ -65,6 +65,7 @@ namespace ProcurementProcess.Net6.Controllers
                     folder +=Guid.NewGuid().ToString() + "_" + request.Image.FileName;
                     string savingFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
 
+                    
                    await request.Image.CopyToAsync(new FileStream(savingFolder, FileMode.Create));
     
                 }

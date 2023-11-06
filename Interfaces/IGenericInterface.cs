@@ -3,11 +3,11 @@
     public interface IGenericInterface<TEntity> where TEntity : class
     {
         IEnumerable<TEntity> GetList();
-        Task<TEntity> GetEntityAsync(int id);
+        TEntity GetEntity(int id);
 
         void CreateAsync(TEntity Tentity);
 
-        Task<TEntity> UpdateAsync(TEntity Tentity);
+        void UpdateAsync(TEntity Tentity);
         Task<TEntity> DeleteAsync(TEntity Tentity);
     }
 }
